@@ -197,7 +197,7 @@ function Main({
             onCwdChange={(newCwd: string) => setCwd(newCwd)}
             multiSelected={multiSelected}
             onMultiSelect={handleMultiSelect}
-            emptyMessage={<Centered>No files or folders</Centered>}
+            emptyMessage={<Centered>没有文件或文件夹</Centered>}
           />
         </DropZone>
       )}
@@ -216,7 +216,7 @@ function Main({
             }}
             onClick={() => setShowTextPadDrawer(true)}
           >
-            Open TextPad
+            打开记事本
           </Button>
         </>
       )}
@@ -247,7 +247,7 @@ function Main({
         }}
         onRename={async () => {
           if (multiSelected?.length !== 1) return;
-          const newName = window.prompt("Rename to:");
+          const newName = window.prompt("重命名为:");
           if (!newName) return;
           await copyPaste(multiSelected[0], cwd + newName, true);
           fetchFiles();
@@ -257,7 +257,7 @@ function Main({
           const filenames = multiSelected
             .map((key) => key.replace(/\/$/, "").split("/").pop())
             .join("\n");
-          const confirmMessage = "Delete the following file(s) permanently?";
+          const confirmMessage = "要永久删除以下文件吗?";
           if (!window.confirm(`${confirmMessage}\n${filenames}`)) return;
           for (const key of multiSelected)
             await fetch(`/webdav/${encodeKey(key)}`, { method: "DELETE" });
