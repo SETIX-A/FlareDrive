@@ -18,7 +18,7 @@ function Header({
       <InputBase
         size="small"
         fullWidth
-        placeholder="Search…"
+        placeholder="搜索…"
         value={search}
         onChange={(e) => onSearchChange(e.target.value)}
         sx={{
@@ -40,15 +40,15 @@ function Header({
         open={Boolean(anchorEl)}
         onClose={() => setAnchorEl(null)}
       >
-        <MenuItem>View as</MenuItem>
-        <MenuItem>Sort by</MenuItem>
+        <MenuItem>查看方式</MenuItem>
+        <MenuItem>排序方式</MenuItem>
         <MenuItem
           onClick={() => {
             setAnchorEl(null);
             setShowProgressDialog(true);
           }}
         >
-          Progress
+          传输进度
         </MenuItem>
       </Menu>
     </Toolbar>
